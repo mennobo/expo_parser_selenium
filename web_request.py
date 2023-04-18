@@ -6,28 +6,25 @@ from time import sleep
 import json
 import shutil
 import os
+import datetime
 
 credentials = {
     'inUserName': 'LS23_BT24.User021@cr14.net',
     'inUserPass': '2fQbo#JQB2ca4%i9*YS*R487RJ^gxq#Su%^YGqzywFF$xEGCRwzuTgN!n^Skfvwp62pYB@5y^Y'
 }
 
+# from selenium.webdriver.firefox.options import Options
+# options = webdriver.FirefoxOptions()
+# options.add_argument("--headless=new")
+# options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
+# driver = webdriver.Firefox(executable_path=r"C:\Users\LogMeIn\Documents\expo_parser\geckodriver.exe", options=options)
 
-from selenium.webdriver.firefox.options import Options
-options = webdriver.FirefoxOptions()
-options.headless = True # This is normally the first google search after people find Selenium.
-options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
-driver = webdriver.Firefox(executable_path=r"C:\Users\peach\Documents\Projecten\Locked_shields_23\expo_parser\geckodriver.exe", options=options)
-
-# =============================================================================
-# 
-# # chrome setup
-# from selenium.webdriver.chrome.options import Options
-# options = Options()
-# options.binary_location = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
-# driver = webdriver.Chrome(options=options, executable_path=r"C:\Users\peach\Documents\Projecten\Locked_shields_23\chromedriver.exe")
-# 
-# =============================================================================
+# chrome setup
+from selenium.webdriver.chrome.options import Options
+options = Options()
+options.add_argument("--headless=new")
+options.binary_location = r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+driver = webdriver.Chrome(options=options, executable_path=r"C:\Users\LogMeIn\Documents\expo_parser\chromedriver.exe")
 
 #driver = webdriver.PhantomJS(executable_path=r"C:\phantomjs-2.1.1-windows\bin\phantomjs.exe")
 
@@ -74,15 +71,21 @@ json_formatted = (json.dumps(
     separators=(',', ': ')
 ))
 
-if os.path.isfile("expo_data.json"):
-    src = "expo_data.json"
-    dst = "expo_data.old.json"
-    shutil.copyfile(src, dst)
+# if os.path.isfile("expo_data.json"):
+#     src = "expo_data.json"
+#     dst = f"expo_data_old.json"
+#     shutil.copyfile(src, dst)
 
-with open("expo_data.json", "w+") as outfile:
+timestamp = int(round(datetime.datetime.now().timestamp()))
+
+with open(f"expo_data_{timestamp}.json", "w+") as outfile:
+    # ugly print
     # json.dump(content_dict, outfile)
+    
+    # pretty print
     outfile.write(json_formatted)
 
+    print(f'written to expo_data_{timestamp}.json')
 
 driver.close()
 driver.quit()
