@@ -10,21 +10,21 @@ import datetime
 
 credentials = {
     'inUserName': 'LS23_BT24.User021@cr14.net',
-    'inUserPass': '2fQbo#JQB2ca4%i9*YS*R487RJ^gxq#Su%^YGqzywFF$xEGCRwzuTgN!n^Skfvwp62pYB@5y^Y'
+    'inUserPass': 'ADD_PASSWORD_HERE'
 }
 
-# from selenium.webdriver.firefox.options import Options
-# options = webdriver.FirefoxOptions()
-# options.add_argument("--headless=new")
-# options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
-# driver = webdriver.Firefox(executable_path=r"C:\Users\LogMeIn\Documents\expo_parser\geckodriver.exe", options=options)
+from selenium.webdriver.firefox.options import Options
+options = webdriver.FirefoxOptions()
+options.add_argument("--headless=new")
+options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
+driver = webdriver.Firefox(executable_path=r"C:\Users\LogMeIn\Documents\expo_parser\geckodriver.exe", options=options)
 
 # chrome setup
-from selenium.webdriver.chrome.options import Options
-options = Options()
-options.add_argument("--headless=new")
-options.binary_location = r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
-driver = webdriver.Chrome(options=options, executable_path=r"C:\Users\LogMeIn\Documents\expo_parser\chromedriver.exe")
+# from selenium.webdriver.chrome.options import Options
+# options = Options()
+# options.add_argument("--headless=new")
+# options.binary_location = r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+# driver = webdriver.Chrome(options=options, executable_path=r"C:\Users\LogMeIn\Documents\expo_parser\chromedriver.exe")
 
 #driver = webdriver.PhantomJS(executable_path=r"C:\phantomjs-2.1.1-windows\bin\phantomjs.exe")
 
